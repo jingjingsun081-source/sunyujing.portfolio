@@ -1,0 +1,20 @@
+# 参考素材
+*参考*
+*参考图*
+*参考视频*
+*参考网页*
+
+# 备份和临时文件
+*.bak
+*.txt
+claude.md
+
+# 未使用的素材
+1.png
+oyster*
+shell*
+starfish*
+sea snails*
+
+# 重复文件
+*副本*

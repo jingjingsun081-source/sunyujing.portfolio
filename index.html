@@ -241,7 +241,7 @@ img { display: block; max-width: 100%; }
   width: 100%; padding-top: 20px; padding-bottom: 40px;
 }
 
-.hero-content { display: flex; flex-direction: column; gap: 14px; }
+.hero-content { display: flex; flex-direction: column; gap: 14px; position: relative; z-index: 20; }
 .hero-name {
   font-family: var(--font-serif);
   font-size: clamp(2.8rem, 5.5vw, 4.2rem);
@@ -258,6 +258,31 @@ img { display: block; max-width: 100%; }
 .hero-location { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; color: rgba(255,255,255,0.7); font-weight: 400; letter-spacing: 0.03em; margin-top: 2px; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
 .hero-location::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.6); }
 .hero-actions { display: flex; gap: 14px; margin-top: 16px; }
+.hero-contact { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.hero-contact-item {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px; border-radius: 100px;
+  font-size: 0.82rem; font-weight: 400; letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: all 0.25s ease;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  cursor: pointer;
+  text-decoration: none;
+}
+.hero-contact-item:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); }
+.hero-contact-icon { font-size: 0.9rem; }
+.hero-contact-copy-hint {
+  font-size: 0.65rem; color: rgba(255,255,255,0.6);
+  padding: 1px 7px; border-radius: 100px;
+  background: rgba(255,255,255,0.15);
+  letter-spacing: 0.02em;
+  transition: all 0.25s ease;
+}
+.hero-contact-phone.copied .hero-contact-copy-hint { color: #BADDDA; background: rgba(255,255,255,0.25); }
 
 .btn {
   padding: 14px 32px; border-radius: 100px;
@@ -990,7 +1015,31 @@ img { display: block; max-width: 100%; }
 .footer-center { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 500; font-style: italic; color: var(--white); letter-spacing: 0.08em; }
 .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; font-size: 0.82rem; font-weight: 350; }
 .footer-right a { color: var(--pearl); }
+.footer-contact {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--pearl); text-decoration: none;
+  font-size: 0.82rem; font-weight: 350;
+  background: none; border: none; cursor: pointer;
+  padding: 0; font-family: inherit; letter-spacing: 0.02em;
+  transition: opacity 0.25s ease;
+}
+.footer-contact:hover { opacity: 0.8; }
+.footer-copy-hint {
+  font-size: 0.62rem; color: rgba(255,255,255,0.55);
+  padding: 1px 7px; border-radius: 100px;
+  background: rgba(255,255,255,0.12);
+  transition: all 0.25s ease;
+}
+.footer-contact-phone.copied .footer-copy-hint { color: #BADDDA; background: rgba(255,255,255,0.25); }
 .footer-bottom { max-width: 1120px; margin: 16px auto 0; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.7rem; opacity: 0.45; text-align: center; letter-spacing: 0.04em; font-weight: 350; }
+.footer-tagline {
+  max-width: 720px; margin: 14px auto 0;
+  font-family: var(--font-serif);
+  font-size: 0.82rem; font-style: italic;
+  color: rgba(255,255,255,0.5);
+  text-align: center; line-height: 1.9;
+  letter-spacing: 0.03em;
+}
 
 /* ===== RESPONSIVE ===== */
 /* ── Tablet & Mobile (≤960px) ── */
@@ -1006,6 +1055,7 @@ img { display: block; max-width: 100%; }
   .hero-bio { max-width: 100%; }
   .hero-tags { justify-content: center; }
   .hero-actions { justify-content: center; flex-wrap: wrap; }
+  .hero-contact { justify-content: center; }
   .hero-name { font-size: clamp(1.8rem, 6vw, 2.8rem); }
   .polaroid-collage { height: 300px; }
   .polaroid-1 { width: 110px; height: 130px; left: 4%; top: 8%; }
@@ -1316,6 +1366,17 @@ img { display: block; max-width: 100%; }
       <div class="hero-actions reveal reveal-d5">
         <a href="#portfolio" class="btn btn-primary" data-nav="portfolio" data-i18n="hero_btn_portfolio">查看作品集</a>
         <a href="#about" class="btn btn-outline" data-nav="about" data-i18n="hero_btn_about">了解更多</a>
+      </div>
+      <div class="hero-contact reveal reveal-d5">
+        <a href="mailto:jingjingsun081@gmail.com" class="hero-contact-item" title="发送邮件">
+          <span class="hero-contact-icon">📧</span>
+          <span class="hero-contact-text">jingjingsun081@gmail.com</span>
+        </a>
+        <button type="button" class="hero-contact-item hero-contact-phone" data-copy="13950199458" title="点击复制手机号">
+          <span class="hero-contact-icon">📞</span>
+          <span class="hero-contact-text">13950199458</span>
+          <span class="hero-contact-copy-hint">复制</span>
+        </button>
       </div>
     </div>
     <div class="polaroid-collage reveal reveal-d1">
@@ -1649,13 +1710,14 @@ img { display: block; max-width: 100%; }
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-left">© 2026 孙语婧</div>
-    <div class="footer-center">S.Y. J</div>
+    <div class="footer-center">Yujing Sun</div>
     <div class="footer-right">
-      <span>📧 <a href="mailto:jingjingsun081@gmail.com">jingjingsun081@gmail.com</a></span>
-      <span>📞 13950199458（微信同号）</span>
+      <a href="mailto:jingjingsun081@gmail.com" class="footer-contact">📧 jingjingsun081@gmail.com</a>
+      <button type="button" class="footer-contact footer-contact-phone" data-copy="13950199458">📞 13950199458（微信同号）<span class="footer-copy-hint">复制</span></button>
     </div>
   </div>
   <div class="footer-bottom">整合营销 · 出海策略 · 数字内容 · AI 商业化探索</div>
+  <div class="footer-tagline">生于海滨小城，志在出海远航。AI 浪潮瞬息万变，我随时迎风而立——期待与你共事。</div>
 
 </footer>
 
@@ -2170,6 +2232,40 @@ img { display: block; max-width: 100%; }
   // Expose for external use
   window._setLanguage = applyLanguage;
   window._getLanguage = () => currentLang;
+})();
+
+/* ===== CONTACT: copy phone number on click ===== */
+(function() {
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    // Fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    return ok ? Promise.resolve() : Promise.reject();
+  }
+
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('[data-copy]');
+    if (!btn) return;
+    const text = btn.getAttribute('data-copy');
+    copyText(text).then(() => {
+      btn.classList.add('copied');
+      const hint = btn.querySelector('.hero-contact-copy-hint, .footer-copy-hint');
+      if (hint) {
+        const orig = hint.textContent;
+        hint.textContent = '已复制';
+        setTimeout(() => { hint.textContent = orig; btn.classList.remove('copied'); }, 1500);
+      }
+    }).catch(() => {});
+  });
 })();
 
 /* ===== AUDIO: Ocean on transition + Bubble on click ===== */

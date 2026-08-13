@@ -2984,10 +2984,11 @@ setTimeout(() => { initPortfolio(); }, 500);
     let html = '<div class="carousel-3d" id="carousel3d">';
     images.forEach((src, i) => {
       let cls = 'hidden';
-      if (i === 0) cls = 'current';
-      else if (i === 1) cls = 'next';
-      else if (i === images.length - 1) cls = 'prev';
-      html += `<div class="carousel-slide ${cls}" data-idx="${i}"><img src="${src}" alt=""></div>`;
+      let imgTag = `<img data-src="${src}" alt="">`;
+      if (i === 0) { cls = 'current'; imgTag = `<img src="${src}" alt="">`; }
+      else if (i === 1) { cls = 'next'; imgTag = `<img src="${src}" alt="">`; }
+      else if (i === images.length - 1) { cls = 'prev'; imgTag = `<img src="${src}" alt="">`; }
+      html += `<div class="carousel-slide ${cls}" data-idx="${i}">${imgTag}</div>`;
     });
     html += '<div class="carousel-nav prev" id="carouselPrev">▲</div>';
     html += '<div class="carousel-nav next" id="carouselNext">▼</div>';
@@ -3005,12 +3006,21 @@ setTimeout(() => { initPortfolio(); }, 500);
 
   function updateCarouselSlides(total) {
     const slides = modalImageStage.querySelectorAll('.carousel-slide');
+    const visibleIdx = new Set([carouselIdx, (carouselIdx + 1) % total, (carouselIdx - 1 + total) % total]);
     slides.forEach((slide, i) => {
       slide.className = 'carousel-slide';
       if (i === carouselIdx) slide.classList.add('current');
       else if (i === (carouselIdx + 1) % total) slide.classList.add('next');
       else if (i === (carouselIdx - 1 + total) % total) slide.classList.add('prev');
       else slide.classList.add('hidden');
+      // Lazy-load: convert data-src to src for visible slides
+      if (visibleIdx.has(i)) {
+        const img = slide.querySelector('img');
+        if (img && img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+      }
     });
     const dots = modalImageStage.querySelectorAll('.carousel-dot');
     dots.forEach((d, i) => d.classList.toggle('active', i === carouselIdx));

@@ -352,7 +352,7 @@ img { display: block; max-width: 100%; }
   position: absolute; bottom: 0; left: 0; z-index: 10;
   width: 100%; height: 80px;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(0,166,198,0) 0%, #00A6C6 40%, #0D4377 100%);
+  background: linear-gradient(to bottom, rgba(1,105,153,0) 0%, #016999 50%, #01409D 100%);
 }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 80px; }
 .about-block-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 500; font-style: italic; color: var(--ocean); letter-spacing: 0.04em; margin-bottom: 18px; }
@@ -493,20 +493,20 @@ img { display: block; max-width: 100%; }
   position: absolute; top: 0; left: 0; z-index: 10;
   width: 100%; height: 80px;
   pointer-events: none;
-  background: linear-gradient(to bottom, #0D4377 0%, rgba(13,67,119,0) 100%);
+  background: linear-gradient(to bottom, #01409D 0%, rgba(1,64,157,0) 100%);
 }
 /* Fog bottom: experience → portfolio */
 .experience-fog {
   position: absolute; bottom: 0; left: 0; z-index: 10;
   width: 100%; height: 150px;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(13,65,117,0) 0%, #0D4175 40%, #4786A5 100%);
+  background: linear-gradient(to bottom, rgba(22,150,213,0) 0%, #1696D5 60%, #1696D5 100%);
 }
 .portfolio-fog {
   position: absolute; top: 0; left: 0; z-index: 10;
   width: 100%; height: 150px;
   pointer-events: none;
-  background: linear-gradient(to bottom, #4786A5 0%, rgba(71,134,165,0) 100%);
+  background: linear-gradient(to bottom, #1696D5 0%, rgba(22,150,213,0) 100%);
 }
 /* Fog: portfolio → about, #BADDDA → #BFD4E1 */
 .portfolio-bottom-fog {
@@ -1386,12 +1386,11 @@ img { display: block; max-width: 100%; }
           <span class="hero-contact-copy-hint">复制</span>
         </button>
       </div>
-      <hr class="hr-thin reveal reveal-d3">
-      <p class="hero-bio reveal reveal-d4" data-i18n="hero_bio">
+      <p class="hero-bio reveal reveal-d4" data-i18n="hero_bio" style="margin-top:-14px;">
         你好，我是孙语婧。<br>
         游走于数字媒体与营销策划之间的<em>创作者</em>。用镜头记录人文波澜，以破圈的营销创意与敏锐的商业嗅觉赋能品牌出海，在 AIGC 的深海中探索多模态内容的无限可能。现居厦门，期待与你共创下一次浪潮。
       </p>
-      <div class="hero-actions reveal reveal-d5">
+      <div class="hero-actions reveal reveal-d5" style="margin-top:6px;">
         <a href="#portfolio" class="btn btn-primary" data-nav="portfolio" data-i18n="hero_btn_portfolio">查看作品集</a>
         <a href="#about" class="btn btn-outline" data-nav="about" data-i18n="hero_btn_about">了解更多</a>
       </div>
